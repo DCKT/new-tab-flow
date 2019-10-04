@@ -1,9 +1,9 @@
 {
-  "name": "SimpleNewTab",
+  "name": "NewTabFlow",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
-  "homepage_url": "http://extensionizr.com",
+  "description": "A simple Chrome new tab extension",
+  "homepage_url": "https://github.com/DCKT/new-tab-flow",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -11,16 +11,11 @@
   },
   "default_locale": "en",
   "background": {
-    "page": "src/bg/background.html",
+    "page": "build/background.html",
     "persistent": true
   },
-  "options_page": "src/options/index.html",
-  "page_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "page action demo",
-    "default_popup": "src/page_action/page_action.html"
-  },
+  "options_page": "build/options.html",
   "chrome_url_overrides": {
-    "newtab": "src/override/override.html"
+    "newtab": "build/override.html"
   }
 }
