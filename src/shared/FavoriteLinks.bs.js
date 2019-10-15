@@ -125,7 +125,7 @@ function FavoriteLinks(Props) {
                                     }),
                                   children: null
                                 }, React.createElement(Core.PopoverTrigger, {
-                                      children: React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* Custom */Block.__(1, ["auto"])]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["200px"]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(/* All */Block.__(0, [/* lg */24187]), undefined, undefined, undefined, undefined, undefined, undefined)("Add link"), [
+                                      children: React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* Custom */Block.__(1, ["auto"])]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["200px"]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(/* All */Block.__(0, [/* lg */24187]), undefined, undefined, undefined, undefined, undefined, undefined, undefined)("Add link"), [
                                                             undefined,
                                                             undefined,
                                                             "add",
@@ -155,7 +155,7 @@ function FavoriteLinks(Props) {
                                                                                                   return value;
                                                                                                 }));
                                                                                   }), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined), undefined, /* url */5843823, undefined, /* () */0))
-                                                                  }), React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, /* blue */-1055309158, undefined, undefined, undefined, undefined, undefined)("Add"), [
+                                                                  }), React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, /* blue */-1055309158, undefined, undefined, undefined, undefined, undefined, undefined)("Add"), [
                                                                         undefined,
                                                                         /* submit */436623384,
                                                                         undefined,

@@ -3,7 +3,8 @@ type theme;
 
 module ThemeProvider: {
   [@bs.module "@chakra-ui/core"] [@react.component]
-  external make: (~theme: theme, ~children: React.element) => React.element = "ThemeProvider";
+  external make: (~theme: theme, ~children: React.element) => React.element =
+    "ThemeProvider";
 };
 
 module CSSReset: {
@@ -59,7 +60,14 @@ module Hooks: {
     };
 
     [@bs.deriving jsConverter]
-    type position = [ | `top | `topLeft | `topRight | `bottom | `bottomLeft | `bottomRight];
+    type position = [
+      | `top
+      | `topLeft
+      | `topRight
+      | `bottom
+      | `bottomLeft
+      | `bottomRight
+    ];
 
     [@bs.deriving jsConverter]
     type status = [ | `danger | `warning | `success | `info];
@@ -143,3 +151,10 @@ module PopoverCloseButton = BsChakra__PopoverCloseButton;
 module PopoverContent = BsChakra__PopoverContent;
 module PopoverTrigger = BsChakra__PopoverTrigger;
 module Popover = BsChakra__Popover;
+module Drawer = BsChakra__Drawer;
+module DrawerCloseButton = BsChakra__DrawerCloseButton;
+module DrawerHeader = BsChakra__DrawerHeader;
+module DrawerContent = BsChakra__DrawerContent;
+module DrawerBody = BsChakra__DrawerBody;
+module DrawerOverlay = BsChakra__DrawerOverlay;
+module DrawerFooter = BsChakra__DrawerFooter;

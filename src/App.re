@@ -15,8 +15,10 @@ module Giphy = {
 
   [@react.component]
   let make = () => {
+    let fieldRef = React.useRef();
     let (state, dispatch) =
-      ReactUpdate.useReducer({keywords: "", results: NotAsked}, (action, state) =>
+      ReactUpdate.useReducer(
+        {keywords: "", results: NotAsked}, (action, state) =>
         switch (action) {
         | UpdateKeywords(keywords) => Update({...state, keywords})
         | SubmitSearch =>
@@ -37,7 +39,8 @@ module Giphy = {
               None;
             },
           )
-        | ReceiveSearchResults(results) => Update({...state, results: Done(results)})
+        | ReceiveSearchResults(results) =>
+          Update({...state, results: Done(results)})
         | CopyGifUrlToClipboard(url) =>
           SideEffects(
             _ => {
@@ -48,62 +51,75 @@ module Giphy = {
         }
       );
 
-    <Modal size={All(`lg)} isOpen=true onClose={() => ()} isCentered=true>
-      <ModalOverlay />
-      <ModalContent>
-        <form
-          onSubmit={e => {
-            e->ReactEvent.Synthetic.preventDefault;
-            dispatch(SubmitSearch);
-          }}>
-          <ModalHeader> "Search on giphy"->React.string </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Stack isInline=true spacing=5 align={All(`flexEnd)}>
-              <FormControl>
-                <Input
-                  _type=`text
-                  id="url"
-                  onChange={event => {
-                    let value = event->ReactEvent.Synthetic.target##value;
-                    dispatch(UpdateKeywords(value));
-                  }}
-                  placeholder="omg"
-                />
-              </FormControl>
-              <IconButton icon={Theme(`search)} _type=`submit variantColor=`blue />
-            </Stack>
-            {switch (state.results) {
-             | NotAsked => React.null
-             | Loading => <Spinner />
-             | Done(Error(err)) => <Text> err->React.string </Text>
-             | Done(Ok(data)) =>
-               <Stack wrap={All(`wrap)} spacing=8>
-                 {data.results
-                  ->Array.map(result =>
-                      result.media
-                      ->Array.get(0)
-                      ->Option.mapWithDefault(React.null, (medias: Tenor.medias) =>
-                          <Box key={result.id}>
-                            <Button
-                              variant=`outline
-                              height={All("auto")}
-                              paddingLeft={All("0px")}
-                              paddingRight={All("0px")}
-                              padding={All("8px")}
-                              onClick={_ => dispatch(CopyGifUrlToClipboard(medias.gif.url))}>
-                              <Image width={All("300px")} rounded="4px" src={medias.gif.url} />
-                            </Button>
-                          </Box>
-                        )
-                    )
-                  ->React.array}
-               </Stack>
-             }}
-          </ModalBody>
-        </form>
-      </ModalContent>
-    </Modal>;
+    <Drawer
+      initialFocusRef=fieldRef placement=`right isOpen=true onClose={() => ()}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerCloseButton />
+        <DrawerHeader borderBottomWidth="1px">
+          "Search on giphy"->React.string
+        </DrawerHeader>
+        <DrawerBody overflow="scroll">
+          <Stack marginBottom={All(Theme(4))}>
+            <FormLabel htmlFor="search"> "Keywords"->React.string </FormLabel>
+            <Input
+              _type=`text
+              id="search"
+              ref=fieldRef
+              onChange={event => {
+                let value = event->ReactEvent.Synthetic.target##value;
+                dispatch(UpdateKeywords(value));
+              }}
+              placeholder="omg, wtf, damn..."
+            />
+          </Stack>
+          {switch (state.results) {
+           | NotAsked => React.null
+           | Loading => <Spinner color=`blue500 size=`md />
+           | Done(Error(err)) => <Text> err->React.string </Text>
+           | Done(Ok(data)) =>
+             <Stack wrap={All(`wrap)} spacing=8>
+               {data.results
+                ->Array.map(result =>
+                    result.media
+                    ->Array.get(0)
+                    ->Option.mapWithDefault(
+                        React.null, (medias: Tenor.medias) =>
+                        <Box key={result.id}>
+                          <Button
+                            variant=`outline
+                            height={All("auto")}
+                            paddingLeft={All("0px")}
+                            paddingRight={All("0px")}
+                            padding={All("8px")}
+                            onClick={_ =>
+                              dispatch(CopyGifUrlToClipboard(medias.gif.url))
+                            }>
+                            <Image
+                              width={All("300px")}
+                              rounded="4px"
+                              src={medias.gif.url}
+                            />
+                          </Button>
+                        </Box>
+                      )
+                  )
+                ->React.array}
+               <Button variant=`ghost> "More"->React.string </Button>
+             </Stack>
+           }}
+        </DrawerBody>
+        <DrawerFooter borderTopWidth="1px">
+          <Button
+            variant=`outline marginRight={All("10px")} onClick={_ => ()}>
+            "Cancel"->React.string
+          </Button>
+          <Button variantColor=`blue onClick={_ => dispatch(SubmitSearch)}>
+            "Submit"->React.string
+          </Button>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>;
   };
 };
 

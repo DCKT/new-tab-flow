@@ -17,6 +17,7 @@ external make:
     ~onClick: ReactEvent.Mouse.t => unit=?,
     ~paddingLeft: 'pLef=?,
     ~paddingRight: 'pRig=?,
+    ~marginRight: 'pRig=?,
     ~padding: 'p=?,
     ~width: 'w=?,
     ~height: 'h=?
@@ -32,6 +33,7 @@ let makeProps =
       ~height: option(responsiveValue(string))=?,
       ~paddingLeft: option(responsiveValue(string))=?,
       ~paddingRight: option(responsiveValue(string))=?,
+      ~marginRight: option(responsiveValue(string))=?,
       ~padding: option(responsiveValue(string))=?,
     ) =>
   makeProps(
@@ -40,6 +42,7 @@ let makeProps =
     ~width=?width->extractProps(v => v),
     ~height=?height->extractProps(v => v),
     ~paddingRight=?paddingRight->extractProps(v => v),
+    ~marginRight=?marginRight->extractProps(v => v),
     ~paddingLeft=?paddingLeft->extractProps(v => v),
     ~padding=?padding->extractProps(v => v),
   );

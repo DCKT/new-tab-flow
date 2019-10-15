@@ -247,6 +247,20 @@ var PopoverTrigger = 0;
 
 var Popover = 0;
 
+var Drawer = 0;
+
+var DrawerCloseButton = 0;
+
+var DrawerHeader = 0;
+
+var DrawerContent = 0;
+
+var DrawerBody = 0;
+
+var DrawerOverlay = 0;
+
+var DrawerFooter = 0;
+
 exports.ThemeProvider = ThemeProvider;
 exports.CSSReset = CSSReset;
 exports.Hooks = Hooks;
@@ -312,4 +326,11 @@ exports.PopoverCloseButton = PopoverCloseButton;
 exports.PopoverContent = PopoverContent;
 exports.PopoverTrigger = PopoverTrigger;
 exports.Popover = Popover;
+exports.Drawer = Drawer;
+exports.DrawerCloseButton = DrawerCloseButton;
+exports.DrawerHeader = DrawerHeader;
+exports.DrawerContent = DrawerContent;
+exports.DrawerBody = DrawerBody;
+exports.DrawerOverlay = DrawerOverlay;
+exports.DrawerFooter = DrawerFooter;
 /* @chakra-ui/core Not a pure module */

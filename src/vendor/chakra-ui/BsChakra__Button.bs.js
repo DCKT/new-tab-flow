@@ -4,7 +4,7 @@
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var BsChakra__Types$Ext = require("./BsChakra__Types.bs.js");
 
-function makeProps(size, variantColor, width, height, paddingLeft, paddingRight, padding) {
+function makeProps(size, variantColor, width, height, paddingLeft, paddingRight, marginRight, padding) {
   var arg = BsChakra__Types$Ext.mapToVariantColor(variantColor);
   var arg$1 = BsChakra__Types$Ext.extractProps(size, BsChakra__Types$Ext.buttonSizeToJs);
   var arg$2 = BsChakra__Types$Ext.extractProps(paddingLeft, (function (v) {
@@ -13,13 +13,16 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
   var arg$3 = BsChakra__Types$Ext.extractProps(paddingRight, (function (v) {
           return v;
         }));
-  var arg$4 = BsChakra__Types$Ext.extractProps(padding, (function (v) {
+  var arg$4 = BsChakra__Types$Ext.extractProps(marginRight, (function (v) {
           return v;
         }));
-  var arg$5 = BsChakra__Types$Ext.extractProps(width, (function (v) {
+  var arg$5 = BsChakra__Types$Ext.extractProps(padding, (function (v) {
           return v;
         }));
-  var arg$6 = BsChakra__Types$Ext.extractProps(height, (function (v) {
+  var arg$6 = BsChakra__Types$Ext.extractProps(width, (function (v) {
+          return v;
+        }));
+  var arg$7 = BsChakra__Types$Ext.extractProps(height, (function (v) {
           return v;
         }));
   return (function (param) {
@@ -39,8 +42,9 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
               var param$23 = arg$4;
               var param$24 = arg$5;
               var param$25 = arg$6;
-              var param$26 = param$10;
-              var param$27 = param$11;
+              var param$26 = arg$7;
+              var param$27 = param$10;
+              var param$28 = param$11;
               var prim = param;
               var prim$1 = arg;
               var prim$2 = arg$1;
@@ -59,6 +63,7 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
               var prim$15 = param$24;
               var prim$16 = param$25;
               var prim$17 = param$26;
+              var prim$18 = param$27;
               var tmp = {
                 children: prim
               };
@@ -122,16 +127,19 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
                 tmp.paddingRight = Caml_option.valFromOption(prim$13);
               }
               if (prim$14 !== undefined) {
-                tmp.padding = Caml_option.valFromOption(prim$14);
+                tmp.marginRight = Caml_option.valFromOption(prim$14);
               }
               if (prim$15 !== undefined) {
-                tmp.width = Caml_option.valFromOption(prim$15);
+                tmp.padding = Caml_option.valFromOption(prim$15);
               }
               if (prim$16 !== undefined) {
-                tmp.height = Caml_option.valFromOption(prim$16);
+                tmp.width = Caml_option.valFromOption(prim$16);
               }
               if (prim$17 !== undefined) {
-                tmp.key = Caml_option.valFromOption(prim$17);
+                tmp.height = Caml_option.valFromOption(prim$17);
+              }
+              if (prim$18 !== undefined) {
+                tmp.key = Caml_option.valFromOption(prim$18);
               }
               return tmp;
             });
