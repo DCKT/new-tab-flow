@@ -1,5 +1,3 @@
-open Belt;
-
 [@decco]
 type resource = string;
 
@@ -7,14 +5,24 @@ type resource = string;
 type apiResource = array(resource);
 
 let faviconUrl = (url: resource) => {
-  switch (Js.String.split(".", url)) {
-  | [|start, end_|] => start ++ "." ++ Js.String.split("/", end_)->Array.getExn(0) ++ "/favicon.ico"
-  | _ => ""
-  };
+  "https://"
+  ++ (
+    url
+    |> Js.String.replace("http://", "")
+    |> Js.String.replace("https://", "")
+    |> Js.String.split("/")
+    |> Array.to_list
+    |> List.hd
+  )
+  ++ "/favicon.ico";
 };
 
 let getSiteName = (url: resource) => {
-  let chunk = url |> Js.String.replace("http://", "") |> Js.String.replace("https://", "") |> Js.String.split(".");
+  let chunk =
+    url
+    |> Js.String.replace("http://", "")
+    |> Js.String.replace("https://", "")
+    |> Js.String.split(".");
 
-  chunk->Array.getExn(0)->String.capitalize;
+  chunk->Belt.Array.getExn(0)->String.capitalize;
 };

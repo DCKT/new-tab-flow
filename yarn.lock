@@ -46,9 +46,10 @@
     toasted-notes "2.1.6"
     use-dark-mode "2.3.1"
 
-"@dck/bs-chakra-ui@git+ssh://git@github.com/DCKT/bs-chakra-ui.git":
-  version "0.8.2"
-  resolved "git+ssh://git@github.com/DCKT/bs-chakra-ui.git#357041a32e422277952800c73cb2aa7fc4347cbf"
+"@dck/bs-chakra-ui@0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@dck/bs-chakra-ui/-/bs-chakra-ui-0.8.3.tgz#44e19837455ba8e320a7c6c5dccbfa7b42200f5f"
+  integrity sha512-nzt9FHUIlTFLoeUtFmDsuNuCUQvEgIzloAHTeEq4JD5AYc+Z0Hr75kTB0Cc+OFRhkqw3ivJ8zQubDCkyWvyxiQ==
   dependencies:
     reason-react "0.7.0"
 
