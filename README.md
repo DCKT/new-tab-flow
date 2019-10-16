@@ -23,3 +23,9 @@ Run webpack server
 ```
 yarn server
 ```
+
+Create production build
+
+```
+yarn webpack:production
+```
