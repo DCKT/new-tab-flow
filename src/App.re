@@ -41,8 +41,8 @@ module App = {
         align={All(`center)}
         padding={All(Theme(4))}>
         <Box>
-          <Hour />
-          <FavoriteLinks />
+          <HourWidget />
+          <FavoriteLinksWidget />
           <Box position=`absolute right={All("10px")} top={All("10px")}>
             <IconButton
               variant=`ghost

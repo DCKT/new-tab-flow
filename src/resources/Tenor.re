@@ -31,7 +31,7 @@ type resource = {
   results: array(result),
 };
 
-let search = (~keywords, ~limit=5, ()) => {
+let search = (~keywords: string, ~limit=5, ()) => {
   Axios.get(baseURL ++ {j|?q=$keywords&key=$key&limit=$limit|j})
   |> Js.Promise.then_(res => res##data |> Js.Promise.resolve)
   |> Js.Promise.then_(data =>

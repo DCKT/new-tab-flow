@@ -10,7 +10,13 @@
     "in-source": true
   },
   "suffix": ".bs.js",
-  "bs-dependencies": ["reason-react", "@ryb73/decco", "reason-react-update", "bs-axios"],
+  "bs-dependencies": [
+    "reason-react",
+    "@ryb73/decco",
+    "reason-react-update",
+    "bs-axios",
+    "restorative"
+  ],
   "ppx-flags": ["@ryb73/decco/ppx/ppx_decco.sh"],
   "warnings": {
     "error": "+101"

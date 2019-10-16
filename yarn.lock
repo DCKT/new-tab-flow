@@ -4107,6 +4107,11 @@ resolve@^1.10.0:
   dependencies:
     path-parse "^1.0.6"
 
+restorative@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/restorative/-/restorative-0.2.1.tgz#0b23e6ce762e9a14612980e2df916bc77576175f"
+  integrity sha512-vSoW2PH1D9lnBgo6mtLKURnPogPowYP8ub8F1Z0lzE8nyh1ptinc2u4ESP6Ne1kKFn22sWVFxtnP7EoFHcAcEQ==
+
 ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"

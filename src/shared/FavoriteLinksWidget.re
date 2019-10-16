@@ -2,11 +2,11 @@ open BsChakra;
 open Belt;
 open BsReactFocusLock;
 
-type state = {links: list(FavLink.resource)};
+type state = {links: list(FavoriteLink.resource)};
 
 type action =
   | FetchStoredLinks
-  | ReceiveStoredLinks(FavLink.apiResource)
+  | ReceiveStoredLinks(FavoriteLink.apiResource)
   | AddLink(string)
   | RemoveLink(string)
   | SaveLinksInStorage;
@@ -28,7 +28,8 @@ let make = () => {
             switch (links) {
             | None => self.send(ReceiveStoredLinks([||]))
             | Some(links) =>
-              let parsedLinks = links->Js.Json.parseExn->FavLink.apiResource_decode;
+              let parsedLinks =
+                links->Js.Json.parseExn->FavoriteLink.apiResource_decode;
 
               switch (parsedLinks) {
               | Result.Error(err) =>
@@ -66,7 +67,10 @@ let make = () => {
           self => {
             LocalStorage.setItem(
               "links",
-              self.state.links->List.toArray->FavLink.apiResource_encode->Js.Json.stringify,
+              self.state.links
+              ->List.toArray
+              ->FavoriteLink.apiResource_encode
+              ->Js.Json.stringify,
             );
             None;
           },
@@ -85,13 +89,24 @@ let make = () => {
         {switch (state.links) {
          | [] => React.null
          | links =>
-           <Box bg=`white padding={All(Theme(4))} boxShadow={All(Theme(`sm))}>
+           <Box
+             bg=`white padding={All(Theme(4))} boxShadow={All(Theme(`sm))}>
              <Stack
-               isInline=true justify={All(`center)} align={All(`center)} maxWidth={All("600px")} wrap={All(`wrap)}>
+               isInline=true
+               justify={All(`center)}
+               align={All(`center)}
+               maxWidth={All("600px")}
+               wrap={All(`wrap)}>
                {links
                 ->List.map(link =>
-                    <Box marginTop={All(Theme(2))} marginBottom={All(Theme(2))} position=`relative>
-                      <Box position=`absolute top={All("-10px")} right={All("5px")}>
+                    <Box
+                      marginTop={All(Theme(2))}
+                      marginBottom={All(Theme(2))}
+                      position=`relative>
+                      <Box
+                        position=`absolute
+                        top={All("-10px")}
+                        right={All("5px")}>
                         <IconButton
                           size={All(`sm)}
                           variant=`ghost
@@ -110,13 +125,14 @@ let make = () => {
                             align={All(`center)}
                             margin={All(Custom("auto"))}>
                             <Box width={All("16px")} height={All("16px")}>
-                              <AspectRatioBox maxWidth={All("16px")} ratio={4 / 3}>
-                                <Image src={FavLink.faviconUrl(link)} />
+                              <AspectRatioBox
+                                maxWidth={All("16px")} ratio={4 / 3}>
+                                <Image src={FavoriteLink.faviconUrl(link)} />
                               </AspectRatioBox>
                             </Box>
                           </Flex>
                           <Text isTruncated=true textAlign={All(`center)}>
-                            {link->FavLink.getSiteName->React.string}
+                            {link->FavoriteLink.getSiteName->React.string}
                           </Text>
                         </Stack>
                       </Link>
@@ -127,10 +143,15 @@ let make = () => {
              </Stack>
            </Box>
          }}
-        <Popover isOpen=popover onOpen={() => setPopover(_ => true)} onClose={() => setPopover(_ => false)}>
+        <Popover
+          isOpen=popover
+          onOpen={() => setPopover(_ => true)}
+          onClose={() => setPopover(_ => false)}>
           <PopoverTrigger>
             <Box maxWidth={All("200px")} margin={All(Custom("auto"))}>
-              <Button leftIcon="add" size={All(`lg)}> "Add link"->React.string </Button>
+              <Button leftIcon="add" size={All(`lg)}>
+                "Add link"->React.string
+              </Button>
             </Box>
           </PopoverTrigger>
           <PopoverContent>
@@ -149,13 +170,16 @@ let make = () => {
                         id="url"
                         ref=firstFieldRef
                         onChange={event => {
-                          let value = event->ReactEvent.Synthetic.target##value;
+                          let value =
+                            event->ReactEvent.Synthetic.target##value;
                           setNewLink(_ => value);
                         }}
                         placeholder="https://"
                       />
                     </FormControl>
-                    <Button _type=`submit variantColor=`blue> "Add"->React.string </Button>
+                    <Button _type=`submit variantColor=`blue>
+                      "Add"->React.string
+                    </Button>
                   </Stack>
                 </form>
               </Box>

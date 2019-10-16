@@ -1,6 +1,37 @@
 open BsChakra;
 open Belt;
 
+module GifPreview = {
+  [@react.component]
+  let make = (~source, ~onSelect) => {
+    let (favoritesGifs, _) = FavoriteGif.api.useStore();
+    let isFavorite = favoritesGifs->Array.some(url => url === source);
+
+    <Box position=`relative>
+      <Button
+        variant=`outline
+        height={All("auto")}
+        paddingLeft={All("0px")}
+        paddingRight={All("0px")}
+        padding={All("8px")}
+        onClick={_ => onSelect()}>
+        <Image width={All("300px")} rounded="4px" src=source />
+      </Button>
+      <Box position=`absolute top={All("10px")} right={All("10px")}>
+        <IconButton
+          size={All(`xs)}
+          icon={Theme(`star)}
+          onClick={_ =>
+            isFavorite
+              ? FavoriteGif.remove(source) : FavoriteGif.save(source)
+          }
+          variantColor={isFavorite ? `yellow : `gray}
+        />
+      </Box>
+    </Box>;
+  };
+};
+
 type state = {
   keywords: string,
   results: Request.t(Result.t(Tenor.resource, string)),
@@ -10,7 +41,7 @@ type state = {
 
 type action =
   | UpdateKeywords(string)
-  | SearchGif
+  | FetchGifs
   | SubmitSearch
   | ReceiveSearchResults(Result.t(Tenor.resource, string))
   | CopyGifUrlToClipboard(string)
@@ -29,21 +60,21 @@ let make = (~closeDrawer) => {
     ReactUpdate.useReducer(initialState, (action, state) =>
       switch (action) {
       | UpdateKeywords(keywords) => Update({...state, keywords})
-      | SearchGif =>
+      | FetchGifs =>
         SideEffects(
-          self => {
+          ({state, send}) => {
             Tenor.search(
-              ~keywords=self.state.keywords,
-              ~limit=self.state.resultLimit,
+              ~keywords=state.keywords,
+              ~limit=state.resultLimit,
               (),
             )
             |> Js.Promise.then_(data => {
-                 self.send(ReceiveSearchResults(Result.Ok(data)));
+                 send(ReceiveSearchResults(Result.Ok(data)));
                  Js.Promise.resolve();
                })
             |> Js.Promise.catch(err => {
                  Js.log(err);
-                 self.send(ReceiveSearchResults(Error("")));
+                 send(ReceiveSearchResults(Error("")));
                  Js.Promise.resolve();
                })
             |> ignore;
@@ -54,7 +85,7 @@ let make = (~closeDrawer) => {
         UpdateWithSideEffects(
           {...state, results: Loading},
           self => {
-            self.send(SearchGif);
+            self.send(FetchGifs);
             None;
           },
         )
@@ -72,7 +103,7 @@ let make = (~closeDrawer) => {
         UpdateWithSideEffects(
           {...state, resultLimit: state.resultLimit + 5, loadingMore: true},
           self => {
-            self.send(SearchGif);
+            self.send(FetchGifs);
             None;
           },
         )
@@ -130,21 +161,12 @@ let make = (~closeDrawer) => {
                 ->Array.get(0)
                 ->Option.mapWithDefault(React.null, (medias: Tenor.medias) =>
                     <Box marginBottom={All(Theme(4))} key={result.id}>
-                      <Button
-                        variant=`outline
-                        height={All("auto")}
-                        paddingLeft={All("0px")}
-                        paddingRight={All("0px")}
-                        padding={All("8px")}
-                        onClick={_ =>
+                      <GifPreview
+                        source={medias.gif.url}
+                        onSelect={_ =>
                           dispatch(CopyGifUrlToClipboard(medias.gif.url))
-                        }>
-                        <Image
-                          width={All("300px")}
-                          rounded="4px"
-                          src={medias.gif.url}
-                        />
-                      </Button>
+                        }
+                      />
                     </Box>
                   )
               )
