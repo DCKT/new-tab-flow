@@ -32,7 +32,7 @@ type resource = {
 };
 
 let search = (~keywords, ~limit=5, ()) => {
-  Axios.get(baseURL ++ {j|?query=$keywords&key=$key&limit=$limit|j})
+  Axios.get(baseURL ++ {j|?q=$keywords&key=$key&limit=$limit|j})
   |> Js.Promise.then_(res => res##data |> Js.Promise.resolve)
   |> Js.Promise.then_(data =>
        switch (data->resource_decode) {

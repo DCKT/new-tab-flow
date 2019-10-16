@@ -20,7 +20,8 @@ external make:
     ~marginRight: 'pRig=?,
     ~padding: 'p=?,
     ~width: 'w=?,
-    ~height: 'h=?
+    ~height: 'h=?,
+    ~ref: 'ref=?
   ) =>
   React.element =
   "Button";

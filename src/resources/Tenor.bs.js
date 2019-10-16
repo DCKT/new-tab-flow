@@ -259,7 +259,7 @@ function resource_decode(v) {
 
 function search(keywords, $staropt$star, param) {
   var limit = $staropt$star !== undefined ? $staropt$star : 5;
-  return Axios.get(baseURL + ("?query=" + (String(keywords) + ("&key=" + (String(key) + ("&limit=" + (String(limit) + ""))))))).then((function (res) {
+  return Axios.get(baseURL + ("?q=" + (String(keywords) + ("&key=" + (String(key) + ("&limit=" + (String(limit) + ""))))))).then((function (res) {
                   return Promise.resolve(res.data);
                 })).then((function (data) {
                 var match = resource_decode(data);

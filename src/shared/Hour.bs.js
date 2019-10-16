@@ -55,7 +55,7 @@ function Hour(Props) {
                 }), 1000);
           return undefined;
         }), ([]));
-  return React.createElement(Core.Stack, Curry._3(BsChakra__Stack$Ext.makeProps(/* All */Block.__(0, [/* center */98248149]), /* All */Block.__(0, [/* center */98248149]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(true, undefined, React.createElement(Core.Heading, Curry._5(BsChakra__Heading$Ext.makeProps(/* All */Block.__(0, [/* xxxxxxl */-526015124]), undefined, undefined, undefined, undefined, /* white */-910341463)(null), undefined, /* h1 */23241, undefined, undefined, /* () */0), match$1[0], React.createElement("span", {
+  return React.createElement(Core.Stack, Curry._3(BsChakra__Stack$Ext.makeProps(/* All */Block.__(0, [/* center */98248149]), /* All */Block.__(0, [/* center */98248149]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(true, undefined, undefined, React.createElement(Core.Heading, Curry._5(BsChakra__Heading$Ext.makeProps(/* All */Block.__(0, [/* xxxxxxl */-526015124]), undefined, undefined, undefined, undefined, /* white */-910341463)(null), undefined, /* h1 */23241, undefined, undefined, /* () */0), match$1[0], React.createElement("span", {
                               className: "blink"
                             }, ":"), match$1[1])), undefined, undefined, /* () */0));
 }

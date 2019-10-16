@@ -31,81 +31,85 @@ function makeProps(align, justify, margin, marginTop, marginBottom, marginLeft, 
           return v;
         }));
   var arg$13 = BsChakra__Types$Ext.extractProps(wrap, BsChakra__Types$Ext.flexWrapToJs);
-  return (function (param, param$1, param$2) {
-      return (function (param$3, param$4, param$5) {
+  return (function (param, param$1, param$2, param$3) {
+      return (function (param$4, param$5, param$6) {
           var prim = param;
-          var prim$1 = arg;
-          var prim$2 = arg$1;
-          var prim$3 = param$1;
+          var prim$1 = param$1;
+          var prim$2 = arg;
+          var prim$3 = arg$1;
           var prim$4 = param$2;
-          var prim$5 = arg$2;
-          var prim$6 = arg$3;
-          var prim$7 = arg$4;
-          var prim$8 = arg$5;
-          var prim$9 = arg$6;
-          var prim$10 = arg$7;
-          var prim$11 = arg$8;
-          var prim$12 = arg$9;
-          var prim$13 = arg$10;
-          var prim$14 = arg$11;
-          var prim$15 = arg$12;
-          var prim$16 = arg$13;
-          var prim$17 = param$3;
+          var prim$5 = param$3;
+          var prim$6 = arg$2;
+          var prim$7 = arg$3;
+          var prim$8 = arg$4;
+          var prim$9 = arg$5;
+          var prim$10 = arg$6;
+          var prim$11 = arg$7;
+          var prim$12 = arg$8;
+          var prim$13 = arg$9;
+          var prim$14 = arg$10;
+          var prim$15 = arg$11;
+          var prim$16 = arg$12;
+          var prim$17 = arg$13;
           var prim$18 = param$4;
+          var prim$19 = param$5;
           var tmp = {
-            children: prim$4
+            children: prim$5
           };
           if (prim !== undefined) {
             tmp.isInline = Caml_option.valFromOption(prim);
           }
           if (prim$1 !== undefined) {
-            tmp.align = Caml_option.valFromOption(prim$1);
+            tmp.shouldWrapChildren = Caml_option.valFromOption(prim$1);
           }
           if (prim$2 !== undefined) {
-            tmp.justify = Caml_option.valFromOption(prim$2);
+            tmp.align = Caml_option.valFromOption(prim$2);
           }
           if (prim$3 !== undefined) {
-            tmp.spacing = Caml_option.valFromOption(prim$3);
+            tmp.justify = Caml_option.valFromOption(prim$3);
           }
-          if (prim$5 !== undefined) {
-            tmp.margin = Caml_option.valFromOption(prim$5);
+          if (prim$4 !== undefined) {
+            tmp.spacing = Caml_option.valFromOption(prim$4);
           }
           if (prim$6 !== undefined) {
-            tmp.marginTop = Caml_option.valFromOption(prim$6);
+            tmp.margin = Caml_option.valFromOption(prim$6);
           }
           if (prim$7 !== undefined) {
-            tmp.marginBottom = Caml_option.valFromOption(prim$7);
+            tmp.marginTop = Caml_option.valFromOption(prim$7);
           }
           if (prim$8 !== undefined) {
-            tmp.marginLeft = Caml_option.valFromOption(prim$8);
+            tmp.marginBottom = Caml_option.valFromOption(prim$8);
           }
           if (prim$9 !== undefined) {
-            tmp.marginRight = Caml_option.valFromOption(prim$9);
+            tmp.marginLeft = Caml_option.valFromOption(prim$9);
           }
           if (prim$10 !== undefined) {
-            tmp.maxWidth = Caml_option.valFromOption(prim$10);
+            tmp.marginRight = Caml_option.valFromOption(prim$10);
           }
           if (prim$11 !== undefined) {
-            tmp.maxHeight = Caml_option.valFromOption(prim$11);
+            tmp.maxWidth = Caml_option.valFromOption(prim$11);
           }
           if (prim$12 !== undefined) {
-            tmp.minWidth = Caml_option.valFromOption(prim$12);
+            tmp.maxHeight = Caml_option.valFromOption(prim$12);
           }
           if (prim$13 !== undefined) {
-            tmp.minHeight = Caml_option.valFromOption(prim$13);
+            tmp.minWidth = Caml_option.valFromOption(prim$13);
           }
           if (prim$14 !== undefined) {
-            tmp.width = Caml_option.valFromOption(prim$14);
+            tmp.minHeight = Caml_option.valFromOption(prim$14);
           }
           if (prim$15 !== undefined) {
-            tmp.height = Caml_option.valFromOption(prim$15);
+            tmp.width = Caml_option.valFromOption(prim$15);
           }
           if (prim$16 !== undefined) {
-            tmp.wrap = Caml_option.valFromOption(prim$16);
+            tmp.height = Caml_option.valFromOption(prim$16);
           }
           if (prim$17 !== undefined) {
+            tmp.wrap = Caml_option.valFromOption(prim$17);
+          }
+          if (prim$18 !== undefined) {
             tmp.position = (function () {
-                  switch (Caml_option.valFromOption(prim$17)) {
+                  switch (Caml_option.valFromOption(prim$18)) {
                     case 903134412 : 
                         return "relative";
                     case 100392110 : 
@@ -116,8 +120,8 @@ function makeProps(align, justify, margin, marginTop, marginBottom, marginLeft, 
                   }
                 })();
           }
-          if (prim$18 !== undefined) {
-            tmp.key = Caml_option.valFromOption(prim$18);
+          if (prim$19 !== undefined) {
+            tmp.key = Caml_option.valFromOption(prim$19);
           }
           return tmp;
         });

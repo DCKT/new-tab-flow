@@ -27,43 +27,45 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
         }));
   return (function (param) {
       return (function (param$1, param$2, param$3, param$4, param$5, param$6, param$7, param$8, param$9) {
-          return (function (param$10, param$11) {
-              var param$12 = param$1;
-              var param$13 = param$2;
-              var param$14 = param$3;
-              var param$15 = param$4;
-              var param$16 = param$5;
-              var param$17 = param$6;
-              var param$18 = param$7;
-              var param$19 = param$8;
-              var param$20 = param$9;
-              var param$21 = arg$2;
-              var param$22 = arg$3;
-              var param$23 = arg$4;
-              var param$24 = arg$5;
-              var param$25 = arg$6;
-              var param$26 = arg$7;
-              var param$27 = param$10;
-              var param$28 = param$11;
+          return (function (param$10, param$11, param$12) {
+              var param$13 = param$1;
+              var param$14 = param$2;
+              var param$15 = param$3;
+              var param$16 = param$4;
+              var param$17 = param$5;
+              var param$18 = param$6;
+              var param$19 = param$7;
+              var param$20 = param$8;
+              var param$21 = param$9;
+              var param$22 = arg$2;
+              var param$23 = arg$3;
+              var param$24 = arg$4;
+              var param$25 = arg$5;
+              var param$26 = arg$6;
+              var param$27 = arg$7;
+              var param$28 = param$10;
+              var param$29 = param$11;
+              var param$30 = param$12;
               var prim = param;
               var prim$1 = arg;
               var prim$2 = arg$1;
-              var prim$3 = param$12;
-              var prim$4 = param$13;
-              var prim$5 = param$14;
-              var prim$6 = param$15;
-              var prim$7 = param$16;
-              var prim$8 = param$17;
-              var prim$9 = param$18;
-              var prim$10 = param$19;
-              var prim$11 = param$20;
-              var prim$12 = param$21;
-              var prim$13 = param$22;
-              var prim$14 = param$23;
-              var prim$15 = param$24;
-              var prim$16 = param$25;
-              var prim$17 = param$26;
-              var prim$18 = param$27;
+              var prim$3 = param$13;
+              var prim$4 = param$14;
+              var prim$5 = param$15;
+              var prim$6 = param$16;
+              var prim$7 = param$17;
+              var prim$8 = param$18;
+              var prim$9 = param$19;
+              var prim$10 = param$20;
+              var prim$11 = param$21;
+              var prim$12 = param$22;
+              var prim$13 = param$23;
+              var prim$14 = param$24;
+              var prim$15 = param$25;
+              var prim$16 = param$26;
+              var prim$17 = param$27;
+              var prim$18 = param$28;
+              var prim$19 = param$29;
               var tmp = {
                 children: prim
               };
@@ -139,7 +141,10 @@ function makeProps(size, variantColor, width, height, paddingLeft, paddingRight,
                 tmp.height = Caml_option.valFromOption(prim$17);
               }
               if (prim$18 !== undefined) {
-                tmp.key = Caml_option.valFromOption(prim$18);
+                tmp.ref = Caml_option.valFromOption(prim$18);
+              }
+              if (prim$19 !== undefined) {
+                tmp.key = Caml_option.valFromOption(prim$19);
               }
               return tmp;
             });

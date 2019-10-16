@@ -4,6 +4,7 @@ open BsChakra__Types;
 external make:
   (
     ~isInline: bool=?,
+    ~shouldWrapChildren: bool=?,
     ~align: 'align=?,
     ~justify: 'justify=?,
     ~spacing: int=?,

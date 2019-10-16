@@ -5,177 +5,54 @@ var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Hour$Ext = require("./shared/Hour.bs.js");
-var Tenor$Ext = require("./resources/Tenor.bs.js");
-var Belt_Array = require("bs-platform/lib/js/belt_Array.js");
 var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
-var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
-var Caml_option = require("bs-platform/lib/js/caml_option.js");
-var ReactUpdate = require("reason-react-update/src/ReactUpdate.bs.js");
 var Core = require("@chakra-ui/core");
+var TenorWidget$Ext = require("./shared/TenorWidget.bs.js");
 var BsChakra__Box$Ext = require("./vendor/chakra-ui/BsChakra__Box.bs.js");
 var FavoriteLinks$Ext = require("./shared/FavoriteLinks.bs.js");
 var BsChakra__Flex$Ext = require("./vendor/chakra-ui/BsChakra__Flex.bs.js");
-var BsChakra__Text$Ext = require("./vendor/chakra-ui/BsChakra__Text.bs.js");
-var BsChakra__Image$Ext = require("./vendor/chakra-ui/BsChakra__Image.bs.js");
-var BsChakra__Input$Ext = require("./vendor/chakra-ui/BsChakra__Input.bs.js");
-var BsChakra__Stack$Ext = require("./vendor/chakra-ui/BsChakra__Stack.bs.js");
-var BsChakra__Button$Ext = require("./vendor/chakra-ui/BsChakra__Button.bs.js");
-var BsChakra__Spinner$Ext = require("./vendor/chakra-ui/BsChakra__Spinner.bs.js");
-
-function App$Giphy(Props) {
-  var fieldRef = React.useRef(/* () */0);
-  var match = ReactUpdate.useReducer(/* record */[
-        /* keywords */"",
-        /* results : NotAsked */0
-      ], (function (action, state) {
-          if (typeof action === "number") {
-            return /* UpdateWithSideEffects */Block.__(1, [
-                      /* record */[
-                        /* keywords */state[/* keywords */0],
-                        /* results : Loading */1
-                      ],
-                      (function (self) {
-                          Tenor$Ext.search(self[/* state */1][/* keywords */0], undefined, /* () */0).then((function (data) {
-                                    Curry._1(self[/* send */0], /* ReceiveSearchResults */Block.__(1, [/* Ok */Block.__(0, [data])]));
-                                    return Promise.resolve(/* () */0);
-                                  })).catch((function (err) {
-                                  console.log(err);
-                                  Curry._1(self[/* send */0], /* ReceiveSearchResults */Block.__(1, [/* Error */Block.__(1, [""])]));
-                                  return Promise.resolve(/* () */0);
-                                }));
-                          return undefined;
-                        })
-                    ]);
-          } else {
-            switch (action.tag | 0) {
-              case 0 : 
-                  return /* Update */Block.__(0, [/* record */[
-                              /* keywords */action[0],
-                              /* results */state[/* results */1]
-                            ]]);
-              case 1 : 
-                  return /* Update */Block.__(0, [/* record */[
-                              /* keywords */state[/* keywords */0],
-                              /* results : Done */[action[0]]
-                            ]]);
-              case 2 : 
-                  var url = action[0];
-                  return /* SideEffects */Block.__(2, [(function (param) {
-                                console.log(url);
-                                return undefined;
-                              })]);
-              
-            }
-          }
-        }));
-  var dispatch = match[1];
-  var match$1 = match[0][/* results */1];
-  var tmp;
-  if (typeof match$1 === "number") {
-    tmp = match$1 !== 0 ? React.createElement(Core.Spinner, BsChakra__Spinner$Ext.makeProps(/* blue500 */982465307, undefined)(undefined, undefined, undefined, /* md */24407, undefined, /* () */0)) : null;
-  } else {
-    var match$2 = match$1[0];
-    tmp = match$2.tag ? React.createElement(Core.Text, Curry._5(BsChakra__Text$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined)(match$2[0]), undefined, undefined, undefined, undefined, /* () */0)) : React.createElement(Core.Stack, Curry._3(BsChakra__Stack$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* wrap */-822134326]))(undefined, 8, null), undefined, undefined, /* () */0), Belt_Array.map(match$2[0][/* results */1], (function (result) {
-                  return Belt_Option.mapWithDefault(Belt_Array.get(result[/* media */2], 0), null, (function (medias) {
-                                return React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, undefined, undefined, /* All */Block.__(0, ["auto"]), /* All */Block.__(0, ["0px"]), /* All */Block.__(0, ["0px"]), undefined, /* All */Block.__(0, ["8px"]))(React.createElement(Core.Image, Curry._8(BsChakra__Image$Ext.makeProps(undefined, /* All */Block.__(0, ["300px"]), undefined)(medias[/* gif */0][/* url */0]), undefined, undefined, undefined, undefined, "4px", undefined, undefined, /* () */0))), [
-                                                            /* outline */-507635838,
-                                                            undefined,
-                                                            undefined,
-                                                            undefined,
-                                                            undefined,
-                                                            undefined,
-                                                            undefined,
-                                                            undefined,
-                                                            (function (param) {
-                                                                return Curry._1(dispatch, /* CopyGifUrlToClipboard */Block.__(2, [medias[/* gif */0][/* url */0]]));
-                                                              }),
-                                                            undefined,
-                                                            /* () */0
-                                                          ]))), undefined, undefined, undefined, result[/* id */3], /* () */0));
-                              }));
-                })), React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)("More"), [
-                    /* ghost */324570959,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    /* () */0
-                  ])));
-  }
-  return React.createElement(Core.Drawer, {
-              children: null,
-              isOpen: true,
-              placement: "right",
-              onClose: (function (param) {
-                  return /* () */0;
-                }),
-              initialFocusRef: fieldRef
-            }, React.createElement(Core.DrawerOverlay, { }), React.createElement(Core.DrawerContent, {
-                  children: null
-                }, React.createElement(Core.DrawerCloseButton, { }), React.createElement(Core.DrawerHeader, {
-                      children: "Search on giphy",
-                      borderBottomWidth: "1px"
-                    }), React.createElement(Core.DrawerBody, {
-                      children: null,
-                      overflow: "scroll"
-                    }, React.createElement(Core.Stack, Curry._3(BsChakra__Stack$Ext.makeProps(undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* Theme */Block.__(0, [4])]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(undefined, undefined, null), undefined, undefined, /* () */0), React.createElement(Core.FormLabel, {
-                              children: "Keywords",
-                              htmlFor: "search"
-                            }), React.createElement(Core.Input, Curry._4(BsChakra__Input$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)("omg, wtf, damn...", undefined, "search", Caml_option.some(fieldRef), undefined, (function ($$event) {
-                                        var value = $$event.target.value;
-                                        return Curry._1(dispatch, /* UpdateKeywords */Block.__(0, [value]));
-                                      }), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined), undefined, /* text */-856044371, undefined, /* () */0))), tmp), React.createElement(Core.DrawerFooter, {
-                      children: null,
-                      borderTopWidth: "1px"
-                    }, React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["10px"]), undefined)("Cancel"), [
-                              /* outline */-507635838,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              (function (param) {
-                                  return /* () */0;
-                                }),
-                              undefined,
-                              /* () */0
-                            ])), React.createElement(Core.Button, Curry.app(BsChakra__Button$Ext.makeProps(undefined, /* blue */-1055309158, undefined, undefined, undefined, undefined, undefined, undefined)("Submit"), [
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              undefined,
-                              (function (param) {
-                                  return Curry._1(dispatch, /* SubmitSearch */0);
-                                }),
-                              undefined,
-                              /* () */0
-                            ])))));
-}
-
-var Giphy = /* module */[/* make */App$Giphy];
+var BsChakra__IconButton$Ext = require("./vendor/chakra-ui/BsChakra__IconButton.bs.js");
 
 function App$App(Props) {
+  var drawer = Core.useDisclosure();
+  React.useEffect((function () {
+          var onPress = function (e) {
+            var match = e.keyCode;
+            var match$1 = drawer.isOpen;
+            if (match !== 71 || match$1) {
+              return /* () */0;
+            } else {
+              return drawer.onOpen();
+            }
+          };
+          window.addEventListener("keydown", onPress);
+          return (function (param) {
+                    window.addEventListener("keyword", onPress);
+                    return /* () */0;
+                  });
+        }), /* array */[drawer.isOpen]);
   return React.createElement(Core.ThemeProvider, {
               theme: Core.theme,
               children: null
-            }, React.createElement(Core.CSSReset, { }), React.createElement(Core.Flex, Curry._3(BsChakra__Flex$Ext.makeProps(undefined, undefined, /* All */Block.__(0, [/* Custom */Block.__(1, ["auto"])]), undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* Theme */Block.__(0, [4])]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["100%"]), undefined, /* All */Block.__(0, [/* center */98248149]), /* All */Block.__(0, [/* center */98248149]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(null), undefined, undefined, undefined, undefined, /* () */0), React.createElement(Hour$Ext.make, { }), React.createElement(FavoriteLinks$Ext.make, { }), React.createElement(App$Giphy, { }))), undefined, undefined, /* () */0)));
+            }, React.createElement(Core.CSSReset, { }), React.createElement(Core.Flex, Curry._3(BsChakra__Flex$Ext.makeProps(undefined, undefined, /* All */Block.__(0, [/* Custom */Block.__(1, ["auto"])]), undefined, undefined, undefined, undefined, /* All */Block.__(0, [/* Theme */Block.__(0, [4])]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["100%"]), undefined, /* All */Block.__(0, [/* center */98248149]), /* All */Block.__(0, [/* center */98248149]), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(null), undefined, undefined, undefined, undefined, /* () */0), React.createElement(Hour$Ext.make, { }), React.createElement(FavoriteLinks$Ext.make, { }), React.createElement(Core.Box, Curry._5(BsChakra__Box$Ext.makeProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* All */Block.__(0, ["10px"]), undefined, undefined, /* All */Block.__(0, ["10px"]))(React.createElement(Core.IconButton, Curry._2(BsChakra__IconButton$Ext.makeProps(undefined, undefined, undefined, undefined, /* Theme */Block.__(0, [/* settings */188579043]))(/* ghost */324570959, undefined, undefined, undefined, undefined, undefined, (function (param) {
+                                                        return drawer.onOpen();
+                                                      })), undefined, /* () */0))), undefined, /* absolute */-1013592457, undefined, undefined, /* () */0)), React.createElement(Core.Drawer, {
+                                  children: null,
+                                  isOpen: drawer.isOpen,
+                                  placement: "right",
+                                  onClose: (function (param) {
+                                      return drawer.onClose();
+                                    })
+                                }, React.createElement(Core.DrawerOverlay, { }), React.createElement(TenorWidget$Ext.make, {
+                                      closeDrawer: (function (param) {
+                                          return drawer.onClose();
+                                        })
+                                    })))), undefined, undefined, /* () */0)));
 }
 
 var App = /* module */[/* make */App$App];
 
 ReactDOMRe.renderToElementWithId(React.createElement(App$App, { }), "root");
 
-exports.Giphy = Giphy;
 exports.App = App;
 /*  Not a pure module */
